@@ -33,6 +33,6 @@ class EadBoxApi {
         fun loadCourses(): Observable<Course>? {
             return eadBoxService.listCourses()
                     .flatMap{ courses -> Observable.fromIterable(courses)}
-                    .map { course -> Course(course.mTitle) }
+                    .map { course -> Course(course.mTitle, course.mCategory, course.mWorkload, course.mLogo) }
         }
 }
