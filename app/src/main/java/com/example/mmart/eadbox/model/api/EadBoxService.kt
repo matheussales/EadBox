@@ -1,11 +1,12 @@
 package com.example.mmart.eadbox.model.api
 
 import com.example.mmart.eadbox.model.Course
-import retrofit2.Call
+import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface EadBoxService {
 
     @GET("courses")
-    fun listCourses() : Call<List<Course>>
+    fun listCourses() : Observable<List<Course>>
+
 }

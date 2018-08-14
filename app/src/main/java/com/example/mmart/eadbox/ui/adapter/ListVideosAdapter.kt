@@ -31,7 +31,7 @@ class ListVideosAdapter(private val mContext: Context,
         val title = itemView.video_title
 
         fun bindView(course: Course) {
-            title.text = course.title
+            title.text = course.mTitle
         }
     }
 }
