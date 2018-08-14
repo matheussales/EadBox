@@ -41,7 +41,8 @@ class ListVideosAdapter(private val mContext: Context,
         fun bindView(course: Course) {
             title.text = course.mTitle
             category.text = course.mCategory.mTitle
-            
+            workload.text = course.mWorkload.toString()
+
             val url = URL(course.mLogo)
             val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
