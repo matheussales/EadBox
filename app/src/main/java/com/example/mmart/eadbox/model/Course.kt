@@ -24,8 +24,6 @@ data class Course(val title: String,
 
 }
 
-data class Category(
-        @SerializedName("title")
-        val title: String) : Serializable
+data class Category(val title: String) : Serializable
 
 data class Lecture(val title: String) : Serializable
