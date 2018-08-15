@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
             android:id="@+id/course_logo"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:contentDescription="@string/course_logo"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/course_title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            tools:text="Video 1" />
+            tools:text="Video 1"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/course_workload"
@@ -59,15 +60,14 @@
             android:background="@drawable/shapes"
             android:padding="4dp"
             android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="12dp"
             android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/course_title"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/course_title"
-            app:layout_constraintVertical_bias="0.0"
             tools:text="category" />
 
     </android.support.constraint.ConstraintLayout>
