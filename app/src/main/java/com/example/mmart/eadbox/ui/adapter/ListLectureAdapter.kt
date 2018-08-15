@@ -1,16 +1,13 @@
 package com.example.mmart.eadbox.ui.adapter
 
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mmart.eadbox.R
 import com.example.mmart.eadbox.model.Lecture
-import kotlinx.android.synthetic.main.activity_course_detail.view.*
 import kotlinx.android.synthetic.main.lecture_item.view.*
-import java.net.URL
 
 
 class ListLectureAdapter(private val mContext: Context,
@@ -31,7 +28,7 @@ class ListLectureAdapter(private val mContext: Context,
     }
 
     class LectureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.lecture_title!!
+        private val title = itemView.lecture_title!!
 
         fun bindView(lecture: Lecture) {
             title.text = lecture.title
