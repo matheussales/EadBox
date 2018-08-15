@@ -8,15 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.mmart.eadbox.R
 import com.example.mmart.eadbox.model.Course
-import kotlinx.android.synthetic.main.list_item.view.*
+import kotlinx.android.synthetic.main.course_item.view.*
 import java.net.URL
-import java.util.*
 
-class ListVideosAdapter(private val mContext: Context,
-                        private val mVideos: List<Course>) : RecyclerView.Adapter<ListVideosAdapter.VideoViewHolder>() {
+class ListCourseAdapter(private val mContext: Context,
+                        private val mVideos: List<Course>,
+                        val clickListener: (Course) -> Unit) : RecyclerView.Adapter<ListCourseAdapter.VideoViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
-        val view = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(mContext).inflate(R.layout.course_item, parent, false)
         return VideoViewHolder(view)
     }
 
@@ -27,9 +28,7 @@ class ListVideosAdapter(private val mContext: Context,
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val course = mVideos[position]
 
-
-
-        holder.bindView(course)
+        holder.bindView(course, clickListener)
     }
 
     class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,15 +37,24 @@ class ListVideosAdapter(private val mContext: Context,
         val workload = itemView.course_workload
         val logoUrl = itemView.course_logo
 
-        fun bindView(course: Course) {
-            title.text = course.mTitle
-            category.text = course.mCategory.mTitle
-            workload.text = course.mWorkload.toString()
+        fun bindView(course: Course, clickListener: (Course) -> Unit) {
+            title.text = course.title
+            category.text = course.category.title
 
-            val url = URL(course.mLogo)
+            if (course.workload == null || course.workload.toInt() == 0) {
+                workload.text = ""
+            } else {
+                val hour = course.workload.toInt()
+
+                workload.text = "${hour.toString()}h"
+            }
+
+            val url = URL(course.logo)
             val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
             logoUrl.setImageBitmap(bitmap)
+
+            itemView.setOnClickListener { clickListener(course) }
         }
     }
 }
