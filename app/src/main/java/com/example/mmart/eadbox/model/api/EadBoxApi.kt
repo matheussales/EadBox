@@ -30,9 +30,9 @@ class EadBoxApi {
         eadBoxService = retrofit.create<EadBoxService>(EadBoxService::class.java)
     }
 
-        fun loadCourses(): Observable<Course>? {
-            return eadBoxService.listCourses()
-                    .flatMap{ courses -> Observable.fromIterable(courses)}
-                    .map { course -> Course(course.mTitle, course.mCategory, course.mWorkload, course.mLogo) }
-        }
+    fun loadCourses(): Observable<Course>? {
+        return eadBoxService.listCourses()
+                .flatMap{ courses -> Observable.fromIterable(courses)}
+                .map { course -> Course(course.title, course.category, course.workload, course.logo, course.lectures) }
+    }
 }
